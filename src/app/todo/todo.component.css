@@ -1,0 +1,18 @@
+.valmis-box {
+  background-color: #4CAF50;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #ffffff;
+  margin-left: 10px;
+}
+
+.gradient-background {
+  background: linear-gradient(to right, #eaeaea, #f4f4f4);
+}
+
+.card-body {
+  -ms-box-shadow: 0 1px 5px rgba(0,0,0,.3);
+  box-shadow: 0 1px 5px #0000004d;
+  border: none;
+  width: 100%;
+}
