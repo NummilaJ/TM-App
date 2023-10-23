@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { TodoComponent } from './todo/todo.component';
-import {CdkDrag} from "@angular/cdk/drag-drop";
+import {CdkDrag, CdkDropListGroup} from "@angular/cdk/drag-drop";
 
 
 @NgModule({
@@ -12,11 +12,11 @@ import {CdkDrag} from "@angular/cdk/drag-drop";
     AppComponent,
     TodoComponent,
   ],
-    imports: [
-        BrowserModule,
-        FormsModule,
-        CdkDrag
-    ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    CdkDrag
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
