@@ -1,4 +1,15 @@
 
 export class Todo {
-  constructor(public text: string, public done: boolean = false) {}
+  text: string;
+  done: boolean;
+  comment: string;
+  showComment: boolean;
+
+  constructor(text: string) {
+    this.text = text;
+    this.done = false;
+    this.comment = '';
+    this.showComment = false;
+  }
 }
+

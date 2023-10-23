@@ -1,4 +1,4 @@
-<div class="flex-container mt-lg-4">
+<div class="flex-container mt-lg-5">
   <div class="card gradient-background">
     <div class="card-header">
       <div class="input-group mb-3">
@@ -8,20 +8,27 @@
         </div>
       </div>
 
+
       <ul class="list-group">
         <li *ngFor="let todo of todos; let i = index" cdkDrag class="list-group-item d-flex justify-content-between align-items-center">
           <div>
             <input type="checkbox" [(ngModel)]="todo.done" />
             {{ todo.text }}
-            <span *ngIf="todo.done" class="valmis-box">Valmis</span>
+            <span *ngIf="todo.done" class="valmis-box btn-sm">Valmis</span>
           </div>
-          <button (click)="removeTodo(i)" class="btn btn-danger btn-sm">Poista</button>
+          <div>
+            <button (click)="toggleComment(todo)" class="btn btn-secondary btn-sm">{{ todo.showComment ? 'Piilota kommentit' : 'Kommentit' }}</button>
+            <textarea [(ngModel)]="todo.comment" placeholder="Lisää kommentti..." rows="4" class="form-control" *ngIf="todo.showComment"></textarea>
+            <button (click)="removeTodo(i)" class="btn btn-danger btn-sm">Poista</button>
+          </div>
         </li>
       </ul>
+
       <button (click)="saveTodosToLocalStorage()" class="btn btn-secondary ml-auto mt-2">Tallenna</button>
     </div>
   </div>
 </div>
+
 
 
 

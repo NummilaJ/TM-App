@@ -37,7 +37,12 @@ export class TodoComponent implements OnInit {
   private saveTodos() {
     localStorage.setItem('todos', JSON.stringify(this.todos));
   }
+
+  toggleComment(todo: Todo) {
+    todo.showComment = !todo.showComment;
+  }
 }
+
 
 
 
