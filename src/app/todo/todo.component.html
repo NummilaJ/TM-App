@@ -2,7 +2,7 @@
   <div class="card gradient-background">
     <div class="card-header">
       <div class="input-group mb-3">
-        <input [(ngModel)]="newTodoText" class="form-control" placeholder="Uusi tehtävä..." (keydown.enter)="addTodo"/>
+        <input [(ngModel)]="newTodoText" class="form-control" placeholder="Uusi tehtävä..." (keyup.enter)="addTodo()"/>
         <div class="input-group-append" style="margin-left: 10px;">
           <button (click)="addTodo()" class="btn btn-secondary">Lisää</button>
         </div>
