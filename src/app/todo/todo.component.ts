@@ -46,7 +46,7 @@ export class TodoComponent implements OnInit {
   addComment(todo: Todo) {
     if (todo.newComment) {
       todo.comments.push(todo.newComment);
-      todo.newComment = ''; // Tyhjennä uusi kommentti-kenttä
+      todo.newComment = '';
       this.saveTodos();
     }
   }
