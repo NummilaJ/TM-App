@@ -12,8 +12,8 @@
       <div class="input-group mb-3">
         <input [(ngModel)]="newTodoText" class="form-control" placeholder="Uusi tehtävä..." (keyup.enter)="addTodo()" />
         <div class="input-group-append" style="margin-left: 10px;">
-          <button (click)="addTodo()" class="btn btn-secondary">Lisää</button>
-          <button (click)="saveTodosToLocalStorage()" class="btn btn-secondary">Tallenna</button>
+          <button (click)="addTodo()" class="btn btn-secondary me-2">Lisää</button>
+          <button (click)="saveTodosToLocalStorage()" class="btn btn-secondary me-2">Tallenna</button>
         </div>
       </div>
     </div>
