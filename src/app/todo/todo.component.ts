@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FirebaseService } from '../services/FirebaseService'; // Tuodaan FirebaseService
 import { Todo } from './todo.model';
 
 @Component({
@@ -12,40 +11,46 @@ export class TodoComponent implements OnInit {
   todos: Todo[] = [];
   newTodoText: string = '';
 
-  constructor(private firebaseService: FirebaseService) {} // Injektoidaan FirebaseService
-
   ngOnInit() {
-    this.firebaseService.getTodos().subscribe((todos) => {
-      this.todos = todos;
-    });
+    const savedTodos = localStorage.getItem('todos');
+    if (savedTodos) {
+      this.todos = JSON.parse(savedTodos);
+    }
   }
 
   addTodo() {
     if (this.newTodoText) {
       const newTodo = new Todo(this.newTodoText);
-      this.firebaseService.addTodo(newTodo); // Tallennetaan uusi todo tietokantaan
+      this.todos.unshift(newTodo);
       this.newTodoText = '';
     }
   }
 
-  removeTodo(todoKey: string) {
-    this.firebaseService.deleteTodo(todoKey); // Poistetaan todo tietokannasta
+  removeTodo(index: number) {
+    this.todos.splice(index, 1);
+    this.saveTodos();
+  }
+
+  saveTodosToLocalStorage() {
+    this.saveTodos();
+  }
+
+  private saveTodos() {
+    localStorage.setItem('todos', JSON.stringify(this.todos));
   }
 
   toggleComment(todo: Todo) {
     todo.showComment = !todo.showComment;
   }
 
-
-  /*addComment(todo: Todo) {
+  addComment(todo: Todo) {
     if (todo.newComment) {
       todo.comments.push(todo.newComment);
+      todo.newComment = '';
       this.saveTodos();
     }
-  }*/
+  }
 }
-
-
 
 
 
