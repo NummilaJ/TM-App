@@ -18,12 +18,18 @@ export class TodoComponent implements OnInit {
   }
 
   addTodo() {
-    if (this.newTodoText.trim().length > 0) {
-      this.todos.push(new Todo(this.newTodoText));
+    if (this.newTodoText) {
+      const newTodo = {
+        text: this.newTodoText,
+        done: false,
+        comment: '',
+        showComment: false,
+      };
+      this.todos.unshift(newTodo);
       this.newTodoText = '';
-      this.saveTodos();
     }
   }
+
 
   removeTodo(index: number) {
     this.todos.splice(index, 1);
