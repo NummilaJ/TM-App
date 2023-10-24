@@ -33,3 +33,9 @@
   bottom: 0;
   overflow-y: auto;
 }
+
+.comment-indicator {
+  font-size: 20px;
+  vertical-align: middle;
+  margin-left: 5px;
+}

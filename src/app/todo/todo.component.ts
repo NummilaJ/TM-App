@@ -6,6 +6,7 @@ import { Todo } from './todo.model';
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.css']
 })
+
 export class TodoComponent implements OnInit {
   todos: Todo[] = [];
   newTodoText: string = '';
@@ -19,17 +20,11 @@ export class TodoComponent implements OnInit {
 
   addTodo() {
     if (this.newTodoText) {
-      const newTodo = {
-        text: this.newTodoText,
-        done: false,
-        comment: '',
-        showComment: false,
-      };
+      const newTodo = new Todo(this.newTodoText);
       this.todos.unshift(newTodo);
       this.newTodoText = '';
     }
   }
-
 
   removeTodo(index: number) {
     this.todos.splice(index, 1);
@@ -37,7 +32,7 @@ export class TodoComponent implements OnInit {
   }
 
   saveTodosToLocalStorage() {
-    localStorage.setItem('todos', JSON.stringify(this.todos));
+    this.saveTodos();
   }
 
   private saveTodos() {
@@ -47,7 +42,16 @@ export class TodoComponent implements OnInit {
   toggleComment(todo: Todo) {
     todo.showComment = !todo.showComment;
   }
+
+  addComment(todo: Todo) {
+    if (todo.newComment) {
+      todo.comments.push(todo.newComment);
+      todo.newComment = ''; // Tyhjennä uusi kommentti-kenttä
+      this.saveTodos();
+    }
+  }
 }
+
 
 
 

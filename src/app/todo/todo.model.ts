@@ -1,15 +1,17 @@
-
 export class Todo {
   text: string;
   done: boolean;
-  comment: string;
+  comments: string[];
   showComment: boolean;
+  newComment: string;
 
   constructor(text: string) {
     this.text = text;
     this.done = false;
-    this.comment = '';
+    this.comments = [];
     this.showComment = false;
+    this.newComment = '';
   }
 }
+
 
