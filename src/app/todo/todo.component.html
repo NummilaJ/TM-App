@@ -13,7 +13,6 @@
         <input [(ngModel)]="newTodoText" class="form-control" placeholder="Uusi tehtävä..." (keyup.enter)="addTodo()" />
         <div class="input-group-append" style="margin-left: 10px;">
           <button (click)="addTodo()" class="btn btn-secondary me-2">Lisää</button>
-          <button (click)="saveTodosToLocalStorage()" class="btn btn-secondary me-2">Tallenna</button>
         </div>
       </div>
     </div>
@@ -30,12 +29,11 @@
             {{ todo.showComment ? 'Piilota' : 'Kommentit' }}
             <span *ngIf="todo.comments && todo.comments.length > 0 && !todo.showComment" class="comment-indicator">•</span>
           </button>
-          <textarea [(ngModel)]="todo.newComment" placeholder="Lisää kommentti..." rows="2" class="form-control rounded p-2" *ngIf="todo.showComment" (keyup.enter)="addComment(todo)"></textarea>
-
+          <textarea [(ngModel)]="todo.newComment" placeholder="Lisää kommentti..." rows="1" class="form-control rounded p-2" *ngIf="todo.showComment"></textarea>
           <div *ngIf="todo.showComment">
             <div *ngFor="let comment of todo.comments" class="comment">{{ comment }}</div>
           </div>
-          <button (click)="removeTodo(i)" class="btn btn-danger btn-sm ml-2">Poista</button>
+          <button (click)="removeTodo" class="btn btn-danger btn-sm ml-2">Poista</button>
         </div>
       </li>
     </ul>
